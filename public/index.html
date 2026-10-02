@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Conference System</title>
+</head>
+<body>
+
+<h2>Conference Management</h2>
+
+<button onclick="addSessions()">Add Sessions</button>
+<button onclick="viewSessions()">View Sessions</button>
+<button onclick="viewRegs()">View Registrations</button>
+
+<h3>Add Attendee</h3>
+<input id="name" placeholder="Name">
+<input id="email" placeholder="Email">
+<input id="phone" placeholder="Phone">
+<button onclick="addAttendee()">Add</button>
+
+<pre id="output"></pre>
+
+<script>
+const API = "http://localhost:5000/api";
+
+async function addAttendee() {
+  const res = await fetch(API + "/add-attendee", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({
+      name: name.value,
+      email: email.value,
+      phone: phone.value
+    })
+  });
+  output.innerText = await res.text();
+}
+
+async function addSessions() {
+  const res = await fetch(API + "/add-sessions", {method:"POST"});
+  output.innerText = await res.text();
+}
+
+async function viewSessions() {
+  const res = await fetch(API + "/sessions");
+  output.innerText = await res.text();
+}
+
+async function viewRegs() {
+  const res = await fetch(API + "/registrations");
+  output.innerText = await res.text();
+}
+</script>
+
+</body>
+</html>

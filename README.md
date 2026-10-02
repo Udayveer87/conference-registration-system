@@ -1,44 +1,26 @@
 # Conference Registration System
 
-A backend-focused MongoDB learning project modeling conference attendee registration, sessions, and bookings — built to demonstrate core MongoDB/Mongoose query patterns.
+A MongoDB/Mongoose practice project modeling conference attendee registration, sessions, and bookings — built to demonstrate core query patterns rather than a polished UI.
+
+## Screenshot
+
+<img width="2716" height="700" alt="conference-registration-system" src="https://github.com/user-attachments/assets/a0be7a4e-21bc-455e-a58a-04e905ecf7f2" />
 
 ## Tech Stack
 
-- Node.js, Express, Mongoose (MongoDB)
+Node.js, Express, Mongoose (MongoDB)
 
-## Features / MongoDB Concepts Demonstrated
+## What it demonstrates
 
-- insertOne / insertMany (attendees, sessions)
-- .populate() across referenced documents (registrations -> attendees + sessions)
-- Pagination, sorting, and limiting (.limit(), .skip(), .sort())
-- Field projection ({ name: 1, email: 1 })
-- countDocuments
-- Compound query operators ($or)
-- Aggregation pipelines ($group, $sort, $limit)
-- deleteOne
-
-## API Endpoints
-
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | /api/add-attendee | Register a new attendee |
-| POST | /api/add-sessions | Seed sample sessions |
-| POST | /api/register | Register an attendee for a session |
-| GET | /api/registrations | List registrations (populated) |
-| GET | /api/sessions | List sessions (paginated/sorted) |
-| GET | /api/attendees | List attendees (projected fields) |
-| GET | /api/count | Count attendees |
-| GET | /api/filter | Filter sessions by duration/capacity |
-| GET | /api/agg1 | Registrations grouped by session |
-| GET | /api/agg2 | Top session by registration count |
-| DELETE | /api/delete/:id | Delete a registration |
+- `insertOne` / `insertMany`, `.populate()` across referenced documents
+- Pagination, sorting, field projection, `countDocuments`
+- `$or` filters and `$group` aggregation pipelines
 
 ## Setup
 
 ```bash
 npm install
-# MongoDB running locally — connects to mongodb://127.0.0.1:27017/conferenceDB
 node server.js
 ```
 
-Server runs on http://localhost:5000. A minimal static frontend is served from /public.
+Visit `http://localhost:5000`. Requires MongoDB running locally (`mongodb://127.0.0.1:27017/conferenceDB`).
